@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { fetchProducts, groupProductsByTag } from '../../lib/fetchProducts'
+import ProductFeature from '../../components/ProductFeature.astro'
+
+const products = await fetchProducts()
+const groupedProducts = groupProductsByTag(products)
+---
+
+<BaseLayout>
+  {
+    groupedProducts.map((tag) => (
+      <ProductFeature title={tag.tag} products={tag.products} />
+    ))
+  }
+</BaseLayout>

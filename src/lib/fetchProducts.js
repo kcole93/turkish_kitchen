@@ -23,7 +23,8 @@ function parseProducts(products) {
         longDescription: record.fields.longDescription
           ? marked.parse(record.fields.longDescription)
           : '',
-        image: record.fields.image ? record.fields.image[0] : null
+        image: record.fields.image ? record.fields.image[0] : null,
+        tag: record.fields.tag ? record.fields.tag : ''
       }
     }
     parsedProducts.push(product)
@@ -40,4 +41,25 @@ export async function fetchFeaturedProducts() {
   let productQuery = await base('Products').select({ view: 'Featured' }).all()
   let products = parseProducts(productQuery)
   return products
+}
+
+export function groupProductsByTag(products) {
+  const grouped = {}
+
+  products.forEach((product) => {
+    if (product.tag) {
+      const tag = product.tag
+      const slug = slugify(tag.toString(), { lower: true })
+
+      if (!grouped.hasOwnProperty(tag)) {
+        grouped[tag] = {
+          tag: tag,
+          slug: slug,
+          products: []
+        }
+      }
+      grouped[tag].products.push(product)
+    }
+  })
+  return Object.values(grouped)
 }

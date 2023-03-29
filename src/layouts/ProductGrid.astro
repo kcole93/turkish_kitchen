@@ -1,0 +1,9 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import ProductFeature from '../components/ProductFeature.astro'
+const { title, products } = Astro.props
+---
+
+<BaseLayout>
+  <ProductFeature title={title} products={products} />
+</BaseLayout>

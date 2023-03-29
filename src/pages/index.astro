@@ -8,12 +8,10 @@ import NewsletterSubscription from '../components/NewsletterSubscription.astro'
 import Separator from '../components/Separator.astro'
 import heroImage from '../assets/images/pexels-julia-volk-5877906.jpg'
 import { fetchFeaturedRecipes } from '../lib/fetchRecipes'
-import { fetchProducts } from '../lib/fetchProducts'
+import { fetchFeaturedProducts } from '../lib/fetchProducts'
 
-let products = await fetchProducts()
+let products = await fetchFeaturedProducts()
 let recipes = await fetchFeaturedRecipes()
-
-console.log(products)
 ---
 
 <html lang='en'>

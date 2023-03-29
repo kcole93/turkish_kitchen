@@ -1,0 +1,22 @@
+---
+import ProductGrid from '../../layouts/ProductGrid.astro'
+import { fetchProducts, groupProductsByTag } from '../../lib/fetchProducts'
+
+export async function getStaticPaths() {
+  const allProducts = await fetchProducts()
+  const allTags = groupProductsByTag(allProducts)
+
+  console.log('allTags: ', allTags)
+  return allTags.map((tag) => {
+    console.log('tag:', tag)
+    return {
+      params: { slug: tag.slug },
+      props: { tag }
+    }
+  })
+}
+
+const { tag } = Astro.props
+---
+
+<ProductGrid title={tag.tag} products={tag.products} />
