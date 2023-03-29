@@ -6,6 +6,7 @@ const slugify = require('slugify')
 const marked = require('marked')
 const dotenv = require('dotenv')
 const mime = require('mime-types')
+const { htmlToText } = require('html-to-text')
 dotenv.config()
 
 Airtable.configure({
@@ -50,11 +51,14 @@ async function downloadImage(url, localPath) {
 function parseProducts(record, titleField, imageField) {
   if (record.fields[titleField]) {
     return {
-      name: record.fields[titleField],
+      title: record.fields[titleField],
       slug: slugify(record.fields[titleField].toString(), { lower: true }),
       link: record.fields.link ? record.fields.link : '',
       description: record.fields.description
         ? marked.parse(record.fields.description)
+        : '',
+      descriptionPlain: record.fields.description
+        ? htmlToText(record.fields.description)
         : '',
       longDescription: record.fields.longDescription
         ? marked.parse(record.fields.longDescription)
@@ -72,11 +76,14 @@ function parseProducts(record, titleField, imageField) {
 function parseRecipes(record, titleField, imageField) {
   if (record.fields[titleField]) {
     return {
-      name: record.fields[titleField],
+      title: record.fields[titleField],
       slug: slugify(record.fields[titleField].toString(), { lower: true }),
       link: record.fields.link ? record.fields.link : '',
       description: record.fields.description
         ? marked.parse(record.fields.description)
+        : '',
+      descriptionPlain: record.fields.description
+        ? htmlToText(record.fields.description)
         : '',
       longDescription: record.fields.longDescription
         ? marked.parse(record.fields.longDescription)
@@ -151,8 +158,7 @@ async function main() {
   const products = await processDataFromAirtable(
     'Products',
     'Grid view',
-    parseProducts,
-    'name'
+    parseProducts
   )
 
   await fs.promises.mkdir(DATA_DIR, { recursive: true })

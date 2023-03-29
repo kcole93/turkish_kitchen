@@ -7,7 +7,7 @@ const products = await fetchProducts()
 const groupedProducts = groupProductsByTag(products)
 ---
 
-<BaseLayout>
+<BaseLayout title='Products'>
   {
     groupedProducts.map((tag) => (
       <ProductFeature title={tag.tag} products={tag.products} />

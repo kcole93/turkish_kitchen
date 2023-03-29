@@ -14,36 +14,24 @@ let products = await fetchFeaturedProducts()
 let recipes = await fetchFeaturedRecipes()
 ---
 
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <BaseLayout>
-    <Hero backgroundImage={heroImage} includeCta={false} />
-    <Separator style='wavy' />
-    <IntroSection title='Welcome to Our Turkish Cuisine Journey'>
-      <p>
-        Our website is dedicated to helping you explore the diverse and
-        flavorful world of Turkish cuisine. From mouth-watering kebabs and
-        savory
-        <em>pide</em> to sweet baklava and Turkish tea, we provide you with carefully
-        curated recipes, top-rated cookbooks, and essential kitchen tools to help
-        you recreate the authentic taste of Turkey in your own home. Join us as we
-        celebrate the rich culinary heritage of this beautiful country!
-      </p>
-    </IntroSection>
-    <ProductFeature heading='Our featured products:' products={products} />
-    <NewsletterSubscription />
-    <RecipeHighlights
-      title='Our favorite recipes:'
-      recipes={recipes}
-      showViewMore={true}
-    />
-  </BaseLayout>
-
-
-</html>
+<BaseLayout>
+  <Hero backgroundImage={heroImage} includeCta={false} />
+  <Separator style='wavy' />
+  <IntroSection title='Welcome to Our Turkish Cuisine Journey'>
+    <p>
+      Our website is dedicated to helping you explore the diverse and flavorful
+      world of Turkish cuisine. From mouth-watering kebabs and savory
+      <em>pide</em> to sweet baklava and Turkish tea, we provide you with carefully
+      curated recipes, top-rated cookbooks, and essential kitchen tools to help you
+      recreate the authentic taste of Turkey in your own home. Join us as we celebrate
+      the rich culinary heritage of this beautiful country!
+    </p>
+  </IntroSection>
+  <ProductFeature heading='Our featured products:' products={products} />
+  <NewsletterSubscription />
+  <RecipeHighlights
+    title='Our favorite recipes:'
+    recipes={recipes}
+    showViewMore={true}
+  />
+</BaseLayout>

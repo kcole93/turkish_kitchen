@@ -4,6 +4,6 @@ import ProductFeature from '../components/ProductFeature.astro'
 const { title, products } = Astro.props
 ---
 
-<BaseLayout>
+<BaseLayout title={title}>
   <ProductFeature title={title} products={products} />
 </BaseLayout>
