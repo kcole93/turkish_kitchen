@@ -1,15 +1,47 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../components/Hero.astro'
+import IntroSection from '../components/IntroSection.astro'
+import ProductFeature from '../components/ProductFeature.astro'
+import RecipeHighlights from '../components/RecipeHighlights.astro'
+import NewsletterSubscription from '../components/NewsletterSubscription.astro'
+import Separator from '../components/Separator.astro'
+import heroImage from '../assets/images/pexels-julia-volk-5877906.jpg'
+import { fetchFeaturedRecipes } from '../lib/fetchRecipes'
+import { fetchProducts } from '../lib/fetchProducts'
+
+let products = await fetchProducts()
+let recipes = await fetchFeaturedRecipes()
+
+console.log(products)
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <BaseLayout>
+    <Hero backgroundImage={heroImage} />
+    <Separator style='wavy' />
+    <IntroSection title='Welcome to Our Turkish Cuisine Journey'>
+      <p>
+        Our website is dedicated to helping you explore the diverse and
+        flavorful world of Turkish cuisine. From mouth-watering kebabs and
+        savory
+        <em>pide</em> to sweet baklava and Turkish tea, we provide you with carefully
+        curated recipes, top-rated cookbooks, and essential kitchen tools to help
+        you recreate the authentic taste of Turkey in your own home. Join us as we
+        celebrate the rich culinary heritage of this beautiful country!
+      </p>
+    </IntroSection>
+    <ProductFeature heading='Our featured products:' products={products} />
+    <NewsletterSubscription />
+    <RecipeHighlights title='Our favorite recipes:' recipes={recipes} />
+  </BaseLayout>
+
+
 </html>

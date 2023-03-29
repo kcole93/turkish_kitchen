@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import RecipeHighlights from '../../components/RecipeHighlights.astro'
+import { fetchRecipes } from '../../lib/fetchRecipes'
+
+const recipes = await fetchRecipes()
+---
+
+<BaseLayout>
+  <RecipeHighlights title='Our Recipes:' recipes={recipes} />
+</BaseLayout>

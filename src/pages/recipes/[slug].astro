@@ -1,0 +1,77 @@
+---
+import IntroSection from '../../components/IntroSection.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { fetchRecipes } from '../../lib/fetchRecipes'
+
+export async function getStaticPaths() {
+  let recipes = await fetchRecipes()
+  // Generate an array of objects with params property containing the slug from the fetched recipes.
+  return recipes.map((recipe) => {
+    return {
+      params: { slug: recipe.slug },
+      props: { recipe }
+    }
+  })
+}
+
+const { recipe } = Astro.props
+---
+
+<BaseLayout>
+  <article class='p-12 lg:p-40'>
+    <div
+      class='md:flex md:items-center lg:place-items-start gap-8 mb-12 p-12 bg-stone-100 rounded-xl'
+    >
+      <div class='md:w-1/2 mb-6 md:mb-0'>
+        <h1 class='text-4xl md:text-6xl font-bold mb-2 font-logo'>
+          {recipe.title}
+        </h1>
+        <div class='text-lg text-gray-600 mb-2 font-logo'>
+          <Fragment set:html={recipe.longDescription} />
+        </div>
+
+        {
+          recipe.prepTime !== '' && (
+            <div class='text-sm text-gray-500'>
+              <span>Prep Time: {recipe.prepTime}</span>
+              <span class='mx-1'>|</span>
+              <span>Cook Time: {recipe.prepTime}</span>
+            </div>
+          )
+        }
+      </div>
+      <div class='md:w-1/2'>
+        <img
+          class='w-full max-h-96 object-cover rounded-lg shadow-md'
+          src={recipe.image.url}
+          alt={recipe.title}
+        />
+      </div>
+    </div>
+
+    <div class='md:flex md:space-x-12'>
+      <div class='md:w-1/2'>
+        <h3 class='text-2xl font-semibold mb-4'>Ingredients</h3>
+        <div class='prose'>
+          <Fragment set:html={recipe.ingredients} />
+        </div>
+      </div>
+      <div class='md:w-1/2 mx-auto lg:py-0'>
+        <h3 class='text-2xl font-semibold sm:mt-4 md:mt-auto mb-4'>
+          Instructions
+        </h3>
+        <div class='prose'>
+          <Fragment set:html={recipe.instructions} />
+        </div>
+      </div>
+      <div class='md:w-1/2 mx-auto lg:py-0'>
+        <div class='bg-lime-100 border-2 rounded-md border-lime-700 p-4'>
+          <h3 class='text-2xl font-semibold sm:mt-4 md:mt-auto mb-4'>Notes</h3>
+          <div class='prose'>
+            <Fragment set:html={recipe.additionalNotes} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

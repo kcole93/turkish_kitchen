@@ -1,0 +1,67 @@
+---
+const navItems = [
+  { text: 'Recipes', href: '/recipes/all' },
+  { text: 'About', href: '/about' }
+]
+---
+
+<header class='bg-primary py-6'>
+  <div
+    class='container mx-auto px-4 flex flex-wrap justify-between items-center'
+  >
+    <a href='/' class='text-4xl font-bold text-white font-logo'>
+      The Turkish Kitchen
+    </a>
+    <nav class='hidden md:flex'>
+      <ul class='flex space-x-4'>
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class='text-white hover:bg-white hover:bg-opacity-40 transition-colors px-4 py-4 rounded-full'
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <button
+      class='md:hidden flex items-center p-2 text-white rounded-full'
+      id='menu-toggle'
+    >
+      <svg viewBox='0 0 20 20' fill='currentColor' class='menu w-6 h-6'>
+        <path
+          d='M2 6h16a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4zm0 8h16a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4z'
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <nav id='mobile-menu' class='md:hidden'>
+    <ul class='flex flex-col space-y-4 px-4 py-4'>
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class='text-white hover:bg-white hover:bg-opacity-40 transition-colors px-4 py-4 rounded-full'
+            >
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle')
+  const mobileMenu = document.getElementById('mobile-menu')
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden')
+  })
+</script>
