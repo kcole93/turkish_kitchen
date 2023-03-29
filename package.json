@@ -3,10 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run prebuild && astro dev",
     "start": "astro dev",
     "prebuild": "node dataProcessor.cjs",
-    "build": "astro build",
+    "build": "npm run prebuild && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
