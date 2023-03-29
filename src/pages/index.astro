@@ -38,7 +38,11 @@ let recipes = await fetchFeaturedRecipes()
     </IntroSection>
     <ProductFeature heading='Our featured products:' products={products} />
     <NewsletterSubscription />
-    <RecipeHighlights title='Our favorite recipes:' recipes={recipes} />
+    <RecipeHighlights
+      title='Our favorite recipes:'
+      recipes={recipes}
+      showViewMore={true}
+    />
   </BaseLayout>
 
 
