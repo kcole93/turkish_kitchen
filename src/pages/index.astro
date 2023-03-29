@@ -23,7 +23,7 @@ let recipes = await fetchFeaturedRecipes()
     <title>Astro</title>
   </head>
   <BaseLayout>
-    <Hero backgroundImage={heroImage} />
+    <Hero backgroundImage={heroImage} includeCta={false} />
     <Separator style='wavy' />
     <IntroSection title='Welcome to Our Turkish Cuisine Journey'>
       <p>
