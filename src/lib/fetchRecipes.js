@@ -14,5 +14,5 @@ export async function fetchRecipes() {
 
 export async function fetchFeaturedRecipes() {
   let recipes = await fetchRecipes()
-  return recipes
+  return recipes.filter((recipe) => recipe.featured === true)
 }

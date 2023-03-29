@@ -15,7 +15,7 @@ export async function fetchProducts() {
 
 export async function fetchFeaturedProducts() {
   let products = await fetchProducts()
-  return products
+  return products.filter((product) => product.featured === true)
 }
 
 export function groupProductsByTag(products) {

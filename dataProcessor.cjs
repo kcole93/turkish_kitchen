@@ -62,7 +62,8 @@ function parseProducts(record, titleField, imageField) {
       image: record.fields[imageField]
         ? { url: record.fields[imageField][0].localUrl }
         : null,
-      tag: record.fields.tag ? record.fields.tag : ''
+      tag: record.fields.tag ? record.fields.tag : '',
+      featured: record.fields.featured ? record.fields.featured : false
     }
   }
   return null
@@ -95,7 +96,10 @@ function parseRecipes(record, titleField, imageField) {
       prepTime: record.fields.prepTime
         ? formatTime(record.fields.prepTime)
         : '',
-      cookTime: record.fields.cookTime ? formatTime(record.fields.cookTime) : ''
+      cookTime: record.fields.cookTime
+        ? formatTime(record.fields.cookTime)
+        : '',
+      featured: record.fields.featured ? record.fields.featured : false
     }
   }
   return null
