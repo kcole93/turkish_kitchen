@@ -50,9 +50,12 @@ async function downloadImage(url, localPath) {
 // Function to parse a product record
 function parseProducts(record, titleField, imageField) {
   if (record.fields[titleField]) {
+    let titleSlug = slugify(record.fields[titleField], { lower: true })
+    let tagSlug = slugify(record.fields.tag, { lower: true })
     return {
       title: record.fields[titleField],
-      slug: slugify(record.fields[titleField].toString(), { lower: true }),
+      slug: titleSlug,
+      detailSlug: `products/${tagSlug}/${titleSlug}`,
       link: record.fields.link ? record.fields.link : '',
       description: record.fields.description
         ? marked.parse(record.fields.description)

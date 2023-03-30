@@ -1,0 +1,55 @@
+---
+import slugify from 'slugify'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { fetchProducts } from '../../../lib/fetchProducts'
+export async function getStaticPaths() {
+  const allProducts = await fetchProducts()
+
+  return allProducts.map((product) => {
+    product.tag = slugify(product.tag, { lower: true })
+    return {
+      params: { tag: product.tag, slug: product.slug },
+      props: { product }
+    }
+  })
+}
+
+const { product } = Astro.props
+---
+
+<BaseLayout
+  title={product.title}
+  description={product.description}
+  image={product.image.url}
+>
+  <section class='p-6 md:p-12'>
+    <div
+      class='bg-white shadow-md rounded-xl p-10 md:flex md:items-center gap-12 mb-6'
+    >
+      <div class='md:w-1/2 mb-6 md:mb-0'>
+        <img
+          class='w-full h-auto rounded-lg md:max-w-md'
+          src={product.image.url}
+          alt={product.title}
+        />
+      </div>
+      <div class='md:w-1/2'>
+        <h1 class='text-3xl font-bold mb-2 mt-4 md:mt-0 font-logo'>
+          {product.title}
+        </h1>
+        <h2 class='text-xl text-gray-600 mb-2' set:html={product.description} />
+        <button
+          class='bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors duration-300'
+        >
+          View on Amazon
+        </button>
+      </div>
+    </div>
+
+    <div class='mt-8'>
+      <h3 class='text-2xl font-semibold mb-4'>Our Review:</h3>
+
+      <div class='prose lg:max-w-none' set:html={product.longDescription} />
+    </div>
+  </section>
+</BaseLayout>

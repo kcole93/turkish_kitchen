@@ -6,11 +6,10 @@ export async function getStaticPaths() {
   const allProducts = await fetchProducts()
   const allTags = groupProductsByTag(allProducts)
 
-  console.log('allTags: ', allTags)
   return allTags.map((tag) => {
     console.log('tag:', tag)
     return {
-      params: { slug: tag.slug },
+      params: { tag: tag.slug },
       props: { tag }
     }
   })
