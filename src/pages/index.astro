@@ -10,8 +10,8 @@ import heroImage from '/assets/images/heroImage.jpg'
 import { fetchFeaturedRecipes } from '../lib/fetchRecipes'
 import { fetchFeaturedProducts } from '../lib/fetchProducts'
 
-let products = await fetchFeaturedProducts()
-let recipes = await fetchFeaturedRecipes()
+let featProducts = await fetchFeaturedProducts()
+let featRecipes = await fetchFeaturedRecipes()
 ---
 
 <BaseLayout>
@@ -27,11 +27,11 @@ let recipes = await fetchFeaturedRecipes()
       the rich culinary heritage of this beautiful country!
     </p>
   </IntroSection>
-  <ProductFeature heading='Our featured products:' products={products} />
+  <ProductFeature heading='Our featured products:' products={featProducts} />
   <NewsletterSubscription />
   <RecipeHighlights
     title='Our favorite recipes:'
-    recipes={recipes}
+    recipes={featRecipes}
     showViewMore={true}
   />
 </BaseLayout>
