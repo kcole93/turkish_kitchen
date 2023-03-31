@@ -155,12 +155,12 @@ async function processDataFromAirtable(
 async function main() {
   const recipes = await processDataFromAirtable(
     'Recipes',
-    'Grid view',
+    'Published',
     parseRecipes
   )
   const products = await processDataFromAirtable(
     'Products',
-    'Grid view',
+    'Published',
     parseProducts
   )
 
