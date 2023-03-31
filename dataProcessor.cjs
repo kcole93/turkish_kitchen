@@ -55,7 +55,7 @@ function parseProducts(record, titleField, imageField) {
     return {
       title: record.fields[titleField],
       slug: titleSlug,
-      detailSlug: `products/${tagSlug}/${titleSlug}`,
+      detailSlug: `${tagSlug}/${titleSlug}`,
       link: record.fields.link ? record.fields.link : '',
       description: record.fields.description
         ? marked.parse(record.fields.description)
