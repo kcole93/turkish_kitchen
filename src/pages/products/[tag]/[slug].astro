@@ -41,7 +41,7 @@ const { product } = Astro.props
         <button
           class='bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors duration-300'
         >
-          View on Amazon
+          <a href={product.link} target='_blank'>View on Amazon</a>
         </button>
       </div>
     </div>
