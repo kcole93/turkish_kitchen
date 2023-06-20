@@ -1,47 +1,23 @@
-# Astro Starter Kit: Minimal
+# Turkish Kitchen: Affiliate Marketing Website
 
-```
-npm create astro@latest -- --template minimal
-```
+## About this project
+Modern web development practices place a premium on delivering fast, responsive, and aesthetically pleasing websites, and I wanted to create a portfolio project that centers on these three criteria. Drawing on my love for Turkish cooking, I created [”The Turkish Kitchen,”](https://turkish-kitchen.netlify.app/) a mock affiliate marketing website showcasing the beauty of Turkish cuisine by harnessing the power of Astro and Tailwind CSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Astro
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Astro is a groundbreaking front-end framework that helps developers build fast and optimized websites with ease. It allows the creation of static HTML files and loads components only when needed, resulting in a highly performant user experience. This static site generation approach significantly improves website load times and minimizes the amount of JavaScript delivered to the user.
 
-## 🚀 Project Structure
+The Turkish Kitchen leverages Astro’s unique features, such as partial hydration and component-oriented architecture, to ensure that only the necessary JavaScript is loaded and executed. I used Astro’s built-in support for fetching remote data, dynamic route creation and static rendering for Recipe Detail pages, resulting in performant load times and great SEO.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Tailwind CSS
+To achieve an elegant and responsive design, I employed Tailwind CSS, a popular utility-first CSS framework. Tailwind CSS offers a vast array of pre-designed components and classes that make it easy to create consistent and responsive designs with minimal effort.
 
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+In The Turkish Kitchen, I used Tailwind CSS to craft clean and modern components, such as product cards, title sections, and editorial content blocks. Additionally, I utilized Tailwind CSS’s typography plugin to ensure a smooth and enjoyable reading experience. I also added subtle animations using the framework’s built-in animation classes, giving the website a polished and professional appearance.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Main Features
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Dynamic Recipe Pages: The Turkish Kitchen features dynamic Recipe Detail pages that are generated based on data fetched from a remote database via a REST API. This feature ensures that each recipe has its unique URL and SEO-friendly content, making the website more discoverable and easily shareable. Moreover, I implemented custom remote data caching to limit the number of API calls made and to store remote images locally in order to take advantage of Netlify’s image asset optimizations and CDN network for faster load times.
+- Component-Oriented Architecture: By breaking down the UI into reusable components, I achieved a maintainable and scalable codebase, making it easy to add new features or modify existing ones.
+- Responsive Design: The website is fully responsive, ensuring a seamless browsing experience on various devices and screen sizes. Tailwind CSS made it simple to create a fluid layout that adapts to different viewport sizes.
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+By combining the innovative capabilities of Astro and Tailwind CSS, I was able to quickly build an aesthetically clean and performant website for The Turkish Kitchen that also capitalizes on some important concepts in modern web development.
